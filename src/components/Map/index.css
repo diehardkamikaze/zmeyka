@@ -1,0 +1,9 @@
+.mapContainer {
+  margin: 100px;
+}
+
+
+.mapRow {
+  width: 100%;  
+  display: flex;
+}

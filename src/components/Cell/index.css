@@ -1,0 +1,34 @@
+
+.snake, .zero, .food, .border, .clear  {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid grey;
+}
+
+.snake {
+  background-color:  #364FC2;
+  
+}
+
+.zero {
+  background-color: white;
+
+}
+
+.food::before {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  content: "";
+  background-color: #55C236;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border: 1px solid grey;
+  border-radius: 50%;
+}
+
+.border {
+  background-color: #FF6313;
+}
