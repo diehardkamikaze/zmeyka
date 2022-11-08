@@ -1,10 +1,14 @@
 export function initGameControls(map, snake) {
   let func = (event) => {
-  
-    if (event.code === 'KeyA')
-      map[snake.x][snake.y] = '-'
-    else if (event.code === 'KeyD')
-      map[snake.x][snake.y] = '+'
+    let direction = snake.direction;
+    if (event.code === 'KeyA' && !(direction === 'W' || direction === 'E'))
+      map[snake.x][snake.y] = direction === 'N' ? '-' : '+';
+    else if (event.code === 'KeyD' && !(direction === 'W' || direction ==='E'))
+      map[snake.x][snake.y] = direction === 'N' ? '+' : '-';
+    else if (event.code === 'KeyW' && !(direction === 'N' || direction === 'S'))
+      map[snake.x][snake.y] = direction === 'W' ? '+' : '-';
+    else if (event.code === 'KeyS' && !(direction === 'N' || direction === 'S'))
+      map[snake.x][snake.y] =  direction === 'W' ? '-' : '+';
   }
   window.addEventListener('keydown', 
   func
