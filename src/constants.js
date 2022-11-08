@@ -1,7 +1,9 @@
-export const GAME_START_SPEED = 3000;
+export const GAME_START_SPEED = 400;
 
 export const MAP_TO_CELL_TYPE = {
   0: "clear",
+  '+': "clear",
+  "-": "clear",
   "S": "snake",
   "W": "snake",
   "E": "snake",

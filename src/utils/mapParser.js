@@ -25,7 +25,7 @@ export function symbolsIsValid(map) {
   return result;
 }
 
-function copyMap(map) {
+export function copyMap(map) {
   const mapCopy = new Array(map.length);
 
   for (let i = 0; i < map.length; i++)
