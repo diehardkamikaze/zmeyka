@@ -1,4 +1,5 @@
 import Cell from "../Cell"
+import { Snake } from "../../utils/snake"
 import "./index.css"
 import { MAP_TO_CELL_TYPE, GAME_START_SPEED } from "../../constants"
 import { useEffect, useRef, useState } from "react"
@@ -9,7 +10,6 @@ import { initGameControls, snakeDirection, directionMove } from "../../utils/gam
 export default function Map() {
   
   const [ tick, setTick ] = useState(0);
-  console.log(tick);
   const snake = useRef({});
 
   const currentMap = useRef([]);
@@ -20,36 +20,42 @@ export default function Map() {
     currentMap.current = copyMap(simple_map);
     currentMap.current[coords[0]][coords[1]] = '0';
 
-    snake.current = {
-      x: coords[0],
-      y: coords[1],
-      next: null,
-      direction: simple_map[coords[0]][coords[1]],
-    };
+    snake.current = new Snake(coords[0], coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next =  new Snake(coords[0] + 1, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next =  new Snake(coords[0] + 2, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next.next =  new Snake(coords[0] + 3, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next.next.next =  new Snake(coords[0] + 4, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next.next.next.next =  new Snake(coords[0] + 5, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next.next.next.next.next =  new Snake(coords[0] + 6, coords[1], simple_map[coords[0]][coords[1]]);
+    snake.current.next.next.next.next.next.next.next =  new Snake(coords[0] + 7, coords[1], simple_map[coords[0]][coords[1]]);
     let remover = initGameControls(currentMap.current, snake.current);
     return remover;
   }, []);
 
 
   useEffect(() => {
-    let id = setTimeout(() => {
-      console.log(currentMap.current);
-      let newDir = snakeDirection(currentMap.current[snake.current.x][snake.current.y], snake.current.direction);
-      console.log(newDir);
-      if (newDir)
-        snake.current.direction = newDir;
-      let newCoords = directionMove(snake.current.direction, [snake.current.x, snake.current.y]);
-      currentMap.current[snake.current.x][snake.current.y] = '0';
-      if (currentMap.current[newCoords[0]][newCoords[1]] === 'X')
-      {
-        alert("GAME OVER");
-        window.location.reload();
+    let id = setTimeout(() => { 
+      let curSnakePart = snake.current;
+      while (curSnakePart) {
+        let newDir = snakeDirection(currentMap.current[curSnakePart.x][curSnakePart.y], curSnakePart.direction);
+        if (newDir)
+          curSnakePart.direction = newDir;
+        let newCoords = directionMove(curSnakePart.direction, [curSnakePart.x, curSnakePart.y]);
+        if (curSnakePart.next === null)
+          currentMap.current[curSnakePart.x][curSnakePart.y] = '0';
+        if (currentMap.current[newCoords[0]][newCoords[1]] === 'X')
+        {
+          console.log("GAME OVER");
+          window.location.reload();
+        }
+        else {
+          curSnakePart.x = newCoords[0];
+          curSnakePart.y = newCoords[1];
+        }
+        
+        curSnakePart = curSnakePart.next;
       }
-      else {
-        snake.current.x = newCoords[0];
-        snake.current.y = newCoords[1];
-      }
-      if (!snake.current.next)
+      
       setTick(tick + 1);
     }, GAME_START_SPEED)
     return () => clearTimeout(id);
@@ -59,8 +65,9 @@ export default function Map() {
       <div className="mapContainer">
         {currentMap.current.map((element, i) => {
         return <div className="mapRow" key={i}>{element.map((elem, j) => {
-          return (snake.current.x === i && snake.current.y === j) ? <Cell key={j} type={MAP_TO_CELL_TYPE["S"]} /> : <Cell key={j} type={MAP_TO_CELL_TYPE[elem]} />
-        })}</div>
+          return snake.current.find((x,y) => (x==i && y==j)) ? <Cell key={j} type={MAP_TO_CELL_TYPE["S"]} /> : <Cell key={j} type={MAP_TO_CELL_TYPE[elem]} />
+        }
+        )}</div>
       })}
       </div>)
 }
