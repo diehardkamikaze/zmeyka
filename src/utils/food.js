@@ -1,23 +1,22 @@
-export function free_space(map) {
-
-}
-
-
 export class Food {
-  free_space;
+
 
   constructor(map) {
-    this.free_space = this.find_free_space(map); 
+    let space = this.free_space(map);
+    let newPos = Math.floor(Math.random() * space.length);
+    this.x = space[newPos][0];
+    this.y = space[newPos][1];
   }
 
-  find_free_space(map) {
+  free_space(map) {
     let result = [];
     for (let i = 0; i < map.length; i++) {
       for(let j = 0; j < map[i].length; j++) {
-        if (map[i][j] !== 'X')
+        if (map[i][j] === '0')
           result.push([i,j]);
       }
     }
     return result;
   }
+
 }

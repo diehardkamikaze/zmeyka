@@ -18,5 +18,15 @@ export class Snake {
     }
     return false;
   }
+
+  getLast() {
+    let c = this;
+    let last;
+    while (c) {
+      last = c;
+      c = c.next;
+    }
+    return last;
+  }
   
 }

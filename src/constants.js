@@ -1,4 +1,4 @@
-export const GAME_START_SPEED =  100 // 400;
+export const GAME_START_SPEED =  400 // 400;
 
 export const MAP_TO_CELL_TYPE = {
   0: "clear",
