@@ -68,3 +68,54 @@
   50% { opacity: 0.5;}
   to {opacity: 0.8;}
   }
+
+@keyframes go_snake_left_right {
+    from {left: -130px;}
+    to { left: 100vw;}
+}
+
+@keyframes go_snake_right_left {
+  from {right: -130px;}
+  to { right: 100vw;}
+}
+
+@keyframes go_snake_top_bottom {
+  from {top: -130px;}
+  to { top: 100vh;}
+}
+
+@keyframes go_snake_bottom_top {
+  from {bottom: -130px;}
+  to { bottom: 100vh;}
+}
+
+.zmey {
+  position: absolute;
+  display: flex;
+}
+
+.zmey:nth-child(1) {
+  top: 20%;
+  animation: go_snake_left_right 10s infinite linear;
+}
+
+.zmey:nth-child(2) {
+  bottom: 20%;
+  animation: go_snake_right_left 10s infinite linear;
+}
+
+.zmey:nth-child(3) {
+  flex-direction: column;
+  left: 20%;
+  animation: go_snake_top_bottom 10s infinite linear;
+  animation-delay: 4s;
+}
+
+.zmey:nth-child(4) {
+  flex-direction: column;
+  right: 20%;
+  animation: go_snake_bottom_top 10s infinite linear;
+  animation-delay: 6s;
+}
+
+

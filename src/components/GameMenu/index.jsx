@@ -1,4 +1,4 @@
-import "./index.css"
+import Zmeys from "./Zmeys";
 import Wkey from "../../assets/images/W.jpg";
 import Akey from "../../assets/images/A.jpg";
 import Skey from "../../assets/images/S.jpg";
@@ -6,7 +6,9 @@ import Dkey from "../../assets/images/D.jpg";
 
 export function GameMenu({handleGameStart}) {
 
-  return <div class="game_menu">
+  return (<>
+        <Zmeys />
+        <div class="game_menu">
             <div>
               <button class="start_game" onClick={handleGameStart}>Start!</button>
               <div class="game_controls">
@@ -16,6 +18,6 @@ export function GameMenu({handleGameStart}) {
                 <span><img src={Dkey} alt="D key" width="50px"/> Move Down</span>
               </div>
             </div>
-          </div>
-
+        </div>
+        </>)
 }
