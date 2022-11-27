@@ -3,7 +3,7 @@ import Cell from "../Cell"
 
 export default function ZmeysAnimation() {
   return (<>
-       <div class="zmey">
+       <div className="zmey">
           <Cell type="snake" />
           <Cell type="snake" />
           <Cell type="snake" />
@@ -12,7 +12,7 @@ export default function ZmeysAnimation() {
           <Cell type="snake" />
           <Cell type="snake" />
         </div>
-        <div class="zmey">
+        <div className="zmey">
           <Cell type="snake" />
           <Cell type="snake" />
           <Cell type="snake" />
@@ -21,7 +21,7 @@ export default function ZmeysAnimation() {
           <Cell type="snake" />
           <Cell type="snake" />
         </div>
-        <div class="zmey">
+        <div className="zmey">
           <Cell type="snake" />
           <Cell type="snake" />
           <Cell type="snake" />
@@ -30,7 +30,7 @@ export default function ZmeysAnimation() {
           <Cell type="snake" />
           <Cell type="snake" />
         </div>
-        <div class="zmey">
+        <div className="zmey">
           <Cell type="snake" />
           <Cell type="snake" />
           <Cell type="snake" />

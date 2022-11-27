@@ -1,5 +1,7 @@
 export const GAME_START_SPEED =  500 // 400;
 
+export const COUTNDOWN_TIMER = 3;
+
 export const MAP_TO_CELL_TYPE = {
   0: "clear",
   '+': "clear",
@@ -11,6 +13,9 @@ export const MAP_TO_CELL_TYPE = {
   "X": "border",
   "*": "food"
 }
+
+
+
 
 export const ERRORS = {
   "bad_symbols": "Map contains bad symbols",
