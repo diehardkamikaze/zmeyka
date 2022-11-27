@@ -1,7 +1,7 @@
 import "./index.css"
 import Cell from "../Cell"
 
-export default function Zmeys() {
+export default function ZmeysAnimation() {
   return (<>
        <div class="zmey">
           <Cell type="snake" />
