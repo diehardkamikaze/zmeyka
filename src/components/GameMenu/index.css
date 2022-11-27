@@ -1,0 +1,70 @@
+.game_menu {
+  width: 100vw;
+  height: 100vh;
+  background-color: #63b3cf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start_game {
+  width: 140px;
+  height: 60px;
+  border-width: 12px;
+  border-color: #7B68EE;
+  color: #7B68EE;
+  border-bottom-left-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.start_game:hover {
+  color: #00308F;
+  cursor: pointer;
+  border-color: #00308F;
+}
+
+.game_controls {
+
+  width: 150px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.game_controls span {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #00308F;
+}
+
+.game_controls img {
+  margin-right: 10px;
+  margin-bottom: 2px;
+  animation: invis 3s infinite ease-in-out;
+}
+
+
+.game_controls span:nth-child(2) img {
+  animation-delay: 1s;
+}
+
+.game_controls span:nth-child(3) img {
+  animation-delay: 2s;
+}
+
+.game_controls span:nth-child(4) img {
+  animation-delay: 3s;
+}
+
+@keyframes invis {
+  from {opacity: 1;}
+  50% { opacity: 0.5;}
+  to {opacity: 0.8;}
+  }

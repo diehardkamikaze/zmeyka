@@ -3,8 +3,8 @@ import { Snake } from "../../utils/snake"
 import "./index.css"
 import { MAP_TO_CELL_TYPE, GAME_START_SPEED } from "../../constants"
 import { useEffect, useRef, useState } from "react"
-import simple_map from '../../maps/simple_map.json'
-import { Food } from "../../utils/food"
+import simple_map from '../../maps/level_1.json'
+import { FoodControl } from "../../utils/Food_control"
 import { symbolsIsValid, mapChecker, copyMap } from "../../utils/mapParser"
 import { initGameControls, snakeDirection, directionMove } from "../../utils/game_controls"
 
@@ -16,6 +16,7 @@ export default function Map() {
 
   const gameSpeed = useRef(GAME_START_SPEED);
   const currentMap = useRef([]);
+  const Food = useRef({});
   
   useEffect(() => {
     let coords = symbolsIsValid(simple_map);
@@ -32,8 +33,9 @@ export default function Map() {
     snake.current.next.next.next.next.next.next =  new Snake(coords[0] + 6, coords[1], simple_map[coords[0]][coords[1]]);
     snake.current.next.next.next.next.next.next.next =  new Snake(coords[0] + 7, coords[1], simple_map[coords[0]][coords[1]]); */
     
-    const food = new Food(currentMap.current, snake.current);
-    currentMap.current[food.x][food.y] = '*';
+    Food.current = new FoodControl(currentMap.current);
+    let foodcords = Food.current.get_new_food_pos(snake.current);
+    currentMap.current[foodcords.x][foodcords.y] = '*';
 
     let remover = initGameControls(currentMap.current, snake.current);
     return remover;
@@ -54,9 +56,9 @@ export default function Map() {
           {
             add = 2;
             curSnakePart.next = new Snake(curSnakePart.x, curSnakePart.y, curSnakePart.direction);
-            const food = new Food(currentMap.current, snake.current);
-            currentMap.current[food.x][food.y] = '*';
-            gameSpeed.current -= 100;
+            let foodcords = Food.current.get_new_food_pos(snake.current);
+            currentMap.current[foodcords.x][foodcords.y] = '*';
+            gameSpeed.current -= 50;
           }
           else currentMap.current[curSnakePart.x][curSnakePart.y] = '0';
         }
