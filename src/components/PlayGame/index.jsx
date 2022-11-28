@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './index.css'
 import { GameMenu } from '../GameMenu'
 import Map from '../Map';
+import { GameInterface } from '../GameInterface';
 
 export default function PlayGame() {
   
@@ -12,5 +13,7 @@ export default function PlayGame() {
   }
 
 
-  return !started ? <GameMenu handleGameStart={handleGameStart} /> : <div className="container"><Map /></div>
+  return !started ? 
+      <GameMenu handleGameStart={handleGameStart} /> : 
+      <GameInterface level={5} totalscore={10} score={4}><div className="container"><Map /></div></GameInterface>
 }

@@ -5,6 +5,7 @@ import { MAP_TO_CELL_TYPE, GAME_START_SPEED } from "../../constants"
 import { useEffect, useRef, useState } from "react"
 import simple_map from '../../maps/level_1.json'
 import { FoodControl } from "../../utils/Food_control"
+import CountDown from "../CountDown"
 import { symbolsIsValid, mapChecker, copyMap } from "../../utils/mapParser"
 import { initGameControls, snakeDirection, directionMove } from "../../utils/game_controls"
 
@@ -86,7 +87,7 @@ export default function Map() {
   }, [tick])
 
 
-  return (
+  return (<><CountDown timer={5} />
       <div className="mapContainer">
         {currentMap.current.map((element, i) => {
         return <div className="mapRow" key={i}>{element.map((elem, j) => {
@@ -94,5 +95,5 @@ export default function Map() {
         }
         )}</div>
       })}
-      </div>)
+      </div></>)
 }

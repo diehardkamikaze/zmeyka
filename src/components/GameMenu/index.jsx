@@ -3,15 +3,11 @@ import Wkey from "../../assets/images/W.jpg";
 import Akey from "../../assets/images/A.jpg";
 import Skey from "../../assets/images/S.jpg";
 import Dkey from "../../assets/images/D.jpg";
-import CountDown from "../CountDown";
 
 export function GameMenu({handleGameStart}) {
 
   return (
-        <div className="game_bg">
-          <ZmeysAnimation />
-
-          <CountDown timer={3} />
+        <>
             <div className="game_menu">
               <button className="start_game" onClick={handleGameStart}>Start!</button>
               <div className="game_controls">
@@ -21,6 +17,7 @@ export function GameMenu({handleGameStart}) {
                 <span><img src={Dkey} alt="D key" width="50px"/> Move Down</span>
               </div>
             </div>
-        </div>
+            <ZmeysAnimation />
+        </>
         )
 }

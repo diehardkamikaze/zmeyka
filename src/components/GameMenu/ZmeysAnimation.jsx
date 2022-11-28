@@ -2,7 +2,7 @@ import "./index.css"
 import Cell from "../Cell"
 
 export default function ZmeysAnimation() {
-  return (<>
+  return (<div className="game_bg">
        <div className="zmey">
           <Cell type="snake" />
           <Cell type="snake" />
@@ -39,5 +39,5 @@ export default function ZmeysAnimation() {
           <Cell type="snake" />
           <Cell type="snake" />
         </div>
-  </>)
+  </div>)
 }
